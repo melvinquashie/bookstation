@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>384</width>
-    <height>356</height>
+    <height>314</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -93,6 +93,9 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionClose">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Close</string>
    </property>

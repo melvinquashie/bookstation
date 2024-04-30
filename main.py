@@ -16,6 +16,7 @@ class SignIn_GUI(QMainWindow):
     self.loginButton.setDefault(True)
   
   def login(self):
+    # Setting username and password. username = USER; password = PASSWORD.
     if self.username.text() == "User" and self.password.text() == "Password":
        # open the main window for bookstation
        self.openMainWindow()
@@ -26,16 +27,29 @@ class SignIn_GUI(QMainWindow):
       self.mainWindow = QMainWindow()
       uic.loadUi("GUI/mainWindow.ui", self.mainWindow)
       self.mainWindow.show()
-    # close the sign in page
+  
+      # close the sign in page
       self.close()
 
+      # Calender Functionality
+      # When date selected is changed:
+      self.mainWindow.calendarWidget.selectionChanged.connect(self.calenderDateChanged)
+
+
+  # Defining calenderDateChanged for when the date is changed on the calendar widget
+  def calenderDateChanged(self):
+     print("Calender Date Changed") # print "Calender Date Changed" in terminal
+     dateSelected = self.mainWindow.calendarWidget.selectedDate().toPyDate() # picks the date selected in the format yyyy-mm-dd (standard format)
+     print("Date Selected:", dateSelected) # prints selected date
 
 
 
+# Defining main function to pull up sign in page
 def main():
   app = QApplication([])
   window = SignIn_GUI()
   app.exec_()
 
+# Running Main function
 if __name__ == "__main__":
   main()
